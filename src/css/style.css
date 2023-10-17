@@ -68,6 +68,9 @@
   cursor: pointer;
   display: none;
 }
+#nav-check {
+  display: none;
+}
 #header #open-nav svg {
   width: 80%;
   height: 80%;
@@ -75,4 +78,278 @@
 
 #main {
   min-height: calc(100vh - 9rem);
+  display: flex;
+  align-items: stretch;
+}
+
+#main #nav {
+  width: 30%;
+  background-color: #ddd;
+}
+
+#main .container {
+  width: 80%;
+  margin: 1rem auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+#main #nav .default-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  align-items: stretch;
+}
+#main #nav button {
+  cursor: pointer;
+  background-color: transparent;
+  border-radius: 0.5rem;
+  padding: 0.7rem;
+}
+#main #nav button:hover {
+  background-color: #ccc;
+}
+#main #nav .default-projects button {
+  display: flex;
+  justify-content: flex-start;
+  border: none;
+  gap: 0.4rem;
+  font-size: 1.2rem;
+  color: #333;
+}
+#main #nav .extra-projects {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+}
+#main #nav .extra-projects h2 {
+  font-weight: bold;
+}
+#main #nav .extra-projects .nested-container {
+  padding: 1rem;
+  padding-right: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+#main #nav .extra-projects .projects {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+#main #nav .extra-projects .projects .project {
+  display: flex;
+  justify-content: space-between;
+  border: none;
+  color: #333;
+}
+#main #nav .extra-projects .projects .project .delete {
+  opacity: 0;
+  padding: 0.2rem;
+  transition: 0.3s ease-in-out;
+}
+#main #nav .extra-projects .projects .project .delete:hover {
+  opacity: 1;
+}
+#main #nav .extra-projects .projects .project .title {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+  align-items: center;
+}
+#main #nav .extra-projects .add {
+  border: none;
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.6rem;
+  align-items: center;
+}
+#main #nav .add-project-form {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+#main #nav .add-project-form form {
+  z-index: 2;
+  background-color: #ddd;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+#main #nav .add-project-form form input {
+  height: 2rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: none;
+}
+#main #nav .add-project-form form button {
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+  transition: 0.3s ease-in-out;
+}
+#main #nav .add-project-form form button:hover {
+  background-color: #ccc;
+}
+
+.adding-form {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  display: none;
+}
+
+.overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  background-color: black;
+  opacity: 0.5;
+}
+.adding-form form {
+  width: 300px;
+  height: 350px;
+  z-index: 2;
+  padding: 0.5rem;
+  background-color: #ddd;
+  border-radius: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.adding-form form .title {
+  height: 3rem;
+  border-radius: 0.5rem;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.5rem;
+}
+.adding-form form #description {
+  height: 6rem;
+  border-radius: 0.5rem;
+  border: none;
+  resize: none;
+  padding: 0.5rem;
+}
+.adding-form form .date {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  height: 3rem;
+  align-items: center;
+}
+.adding-form form .date #date {
+  color: darkcyan;
+  border-radius: 0.5rem;
+  text-transform: uppercase;
+  background-color: transparent;
+  border: 0.5px darkcyan solid;
+  font-size: 0.7rem;
+  padding: 0.3rem 0.6rem;
+}
+.adding-form form .priority {
+  display: flex;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  height: 3rem;
+  align-items: center;
+}
+.adding-form form .priority input {
+  display: none;
+}
+.adding-form form .priority label:first-child {
+  font-size: 1.2rem;
+}
+.adding-form form .priority label:not(:first-child) {
+  cursor: pointer;
+}
+.adding-form form .priority #low-label {
+  color: green;
+  border: green solid 0.5px;
+  background-color: transparent;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+}
+.adding-form form .priority #medium-label {
+  color: orange;
+  border: orange solid 0.5px;
+  background-color: transparent;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+}
+.adding-form form .priority #high-label {
+  color: red;
+  border: red solid 0.5px;
+  background-color: transparent;
+  padding: 0.4rem;
+  border-radius: 0.5rem;
+}
+
+.adding-form form .priority #low-label:hover {
+  background-color: green;
+  color: white;
+}
+.adding-form form .priority #medium-label:hover {
+  background-color: orange;
+  color: white;
+}
+.adding-form form .priority #high-label:hover {
+  background-color: red;
+  color: white;
+}
+.adding-form form .priority #low:checked + label {
+  background-color: green;
+  color: white;
+}
+.adding-form form .priority #medium:checked + label {
+  background-color: orange;
+  color: white;
+}
+.adding-form form .priority #high:checked + label {
+  background-color: red;
+  color: white;
+}
+.adding-form form .add-task {
+  font-size: 2rem;
+  padding: 0.6rem;
+  border-radius: 0.5rem;
+  color: whitesmoke;
+  border: none;
+  background-color: lightgreen;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+.adding-form form .add-task:hover {
+  background-color: rgb(72, 221, 72);
+}
+
+@media (max-width: 600px) {
+  #header #open-nav {
+    display: block;
+  }
+  #nav {
+    display: none;
+  }
+  #main {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  #main #nav {
+    width: 100%;
+  }
 }
