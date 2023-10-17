@@ -17,7 +17,97 @@
         <i class="fas fa-bars"></i>
       </button>
     </header>
-    <main id="main"></main>
+    <main id="main">
+      <nav class="nav" id="nav">
+        <div class="container">
+          <div class="default-projects">
+            <button class="inbox" id="inbox">
+              <i class="fas fa-inbox"></i>
+              <span>Inbox</span>
+            </button>
+            <button class="today" id="today">
+              <i class="fas fa-calendar-day"></i>
+              <span>Today</span>
+            </button>
+          </div>
+          <div class="extra-projects">
+            <h2>Projects</h2>
+            <div class="nested-container">
+              <div class="projects">
+                <!-- temp -->
+                <button class="gym project">
+                  <div class="title">
+                    <i class="fas fa-tasks"></i>
+                    <span class="text">gym</span>
+                  </div>
+                  <div class="delete">
+                    <i class="fas fa-times"></i>
+                  </div>
+                </button>
+                <!-- temp -->
+              </div>
+              <button class="add">
+                <i class="fas fa-plus"></i>
+                <span>Add Project</span>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="add-project-form">
+          <div class="overlay"></div>
+          <form action="">
+            <input type="text" placeholder="Title" class="title" />
+            <button>Add Project</button>
+          </form>
+        </div>
+      </nav>
+      <div id="content" class="content"></div>
+      <div class="adding-form">
+        <div class="overlay"></div>
+        <form action="">
+          <input
+            type="text"
+            placeholder="Title"
+            required
+            name="title"
+            class="title"
+          />
+          <textarea
+            name="description"
+            id="description"
+            class="description"
+            placeholder="Description..."
+            required
+          ></textarea>
+          <div class="date">
+            <label id="date-label" for="date">Date:</label>
+            <input type="date" required name="date" id="date" />
+          </div>
+          <div class="priority">
+            <label id="priority">Priority:</label>
+            <input type="radio" required name="Priority" id="low" value="low" />
+            <label for="low" id="low-label">LOW</label>
+            <input
+              type="radio"
+              required
+              name="Priority"
+              id="medium"
+              value="medium"
+            />
+            <label for="medium" id="medium-label">MEDIUM</label>
+            <input
+              type="radio"
+              required
+              name="Priority"
+              id="high"
+              value="high"
+            />
+            <label for="high" id="high-label">HIGH</label>
+          </div>
+          <button class="add-task">Add Task</button>
+        </form>
+      </div>
+    </main>
     <footer id="footer">
       <span>Copyright © 2023 Abdullah-Masto </span>
       <a
