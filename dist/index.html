@@ -23,30 +23,18 @@
           <div class="default-projects">
             <button class="inbox" id="inbox">
               <i class="fas fa-inbox"></i>
-              <span>Inbox</span>
+              <span class="text">Inbox</span>
             </button>
             <button class="today" id="today">
               <i class="fas fa-calendar-day"></i>
-              <span>Today</span>
+              <span class="text">Today</span>
             </button>
           </div>
           <div class="extra-projects">
             <h2>Projects</h2>
-            <div class="nested-container">
-              <div class="projects">
-                <!-- temp -->
-                <button class="gym project">
-                  <div class="title">
-                    <i class="fas fa-tasks"></i>
-                    <span class="text">gym</span>
-                  </div>
-                  <div class="delete">
-                    <i class="fas fa-times"></i>
-                  </div>
-                </button>
-                <!-- temp -->
-              </div>
-              <button class="add">
+            <div id="nested-container" class="nested-container">
+              <div class="projects"></div>
+              <button id="add-project" class="add">
                 <i class="fas fa-plus"></i>
                 <span>Add Project</span>
               </button>
@@ -55,19 +43,41 @@
         </div>
         <div class="add-project-form">
           <div class="overlay"></div>
-          <form action="">
+          <form action="" autocomplete="off">
             <input type="text" placeholder="Title" class="title" />
-            <button>Add Project</button>
+            <input class="add-project" type="submit" value="Add Project" />
           </form>
         </div>
       </nav>
       <div id="content" class="content">
+        <div id="display-details" class="display-details">
+          <div class="overlay"></div>
+          <div class="panel">
+            <h1 class="title"></h1>
+            <div class="project">
+              <span class="left">Project:</span>
+              <span class="right"></span>
+            </div>
+            <div class="description">
+              <span class="left">Description:</span>
+              <span class="right"></span>
+            </div>
+            <div class="date">
+              <span class="left">Date:</span>
+              <span class="right"></span>
+            </div>
+            <div class="priority">
+              <span class="left">Priority:</span>
+              <span class="right"></span>
+            </div>
+          </div>
+        </div>
         <div id="tasks"></div>
-        <button class="add-task">Add Task</button>
+        <button id="add-task" class="add-task">Add Task</button>
       </div>
       <div class="adding-form">
         <div class="overlay"></div>
-        <form action="">
+        <form autocomplete="off" action="">
           <input
             type="text"
             placeholder="Title"
@@ -89,7 +99,7 @@
           <div class="priority">
             <label id="priority">Priority:</label>
             <input type="radio" required name="Priority" id="low" value="low" />
-            <label for="low" id="low-label">LOW</label>
+            <label class="low-label" for="low" id="low-label">LOW</label>
             <input
               type="radio"
               required
@@ -97,7 +107,9 @@
               id="medium"
               value="medium"
             />
-            <label for="medium" id="medium-label">MEDIUM</label>
+            <label class="medium-label" for="medium" id="medium-label"
+              >MEDIUM</label
+            >
             <input
               type="radio"
               required
@@ -105,11 +117,66 @@
               id="high"
               value="high"
             />
-            <label for="high" id="high-label">HIGH</label>
+            <label class="high-label" for="high" id="high-label">HIGH</label>
           </div>
-          <button class="add-task">Add Task</button>
+          <input type="submit" class="add-task" value="Add Task" />
         </form>
       </div>
+      <!-- editing form -->
+      <div class="adding-form edit">
+        <div class="overlay"></div>
+        <form autocomplete="off" action="">
+          <input
+            type="text"
+            placeholder="Title"
+            required
+            name="title"
+            class="title"
+          />
+          <textarea
+            name="description"
+            id="description2"
+            class="description"
+            placeholder="Description..."
+            required
+          ></textarea>
+          <div class="date">
+            <label id="date-label2" for="date2">Date:</label>
+            <input type="date" required name="date" id="date2" />
+          </div>
+          <div class="priority">
+            <label id="priority2">Priority:</label>
+            <input
+              type="radio"
+              required
+              name="Priority2"
+              id="low2"
+              value="low"
+            />
+            <label class="low-label" for="low2" id="low-label2">LOW</label>
+            <input
+              type="radio"
+              required
+              name="Priority2"
+              id="medium2"
+              value="medium"
+            />
+            <label class="medium-label" for="medium2" id="medium-label2"
+              >MEDIUM</label
+            >
+            <input
+              type="radio"
+              required
+              name="Priority2"
+              id="high2"
+              value="high"
+            />
+            <label class="high-label" for="high2" id="high-label2">HIGH</label>
+          </div>
+          <input type="submit" class="add-task edit" value="Edit Task" />
+        </form>
+      </div>
+      <!-- end editing form -->
     </main>
     <footer id="footer">
       <span>Copyright © 2023 Abdullah-Masto </span>

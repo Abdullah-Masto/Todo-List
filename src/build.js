@@ -5,7 +5,7 @@ const today = format(new Date(), "yyyy-MM-dd");
 function getTodayTasks(todos) {
   let list = {};
   for (let project in todos) {
-    list[project] = project.filter((todo) => {
+    list[project] = todos[project].filter((todo) => {
       return todo.date == today;
     });
   }
@@ -48,11 +48,18 @@ function edit(todo, title, description, date, priority) {
 function addTodo(todos, project, todo) {
   todos[project].push(todo);
 }
-function remove(todos, project, todo) {
-  const index = todos[project].indexOf(todo);
-  if (index > -1) todos[project].splice(index, 1);
+function remove(todos, project, todoTitle) {
+  const array = todos[project];
+  let index = -1;
+  for (let i = 0; i < array.length; i++) {
+    if (array[i].title == todoTitle) {
+      index = i;
+      break;
+    }
+  }
+  if (index > -1) array.splice(index, 1);
 }
-function addProject(title) {
+function addProject(todos, title) {
   todos[title] = [];
 }
 function deleteProject(todos, project) {
