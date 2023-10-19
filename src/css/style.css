@@ -483,18 +483,22 @@
 #main .adding-form.active {
   transform: scale(1);
   transition: 0.3s ease-in-out;
+  z-index: 3;
 }
 #main .adding-form.edit.active {
   transform: scale(1);
   transition: 0.3s ease-in-out;
+  z-index: 3;
 }
 #main #nav .add-project-form.active {
   transform: scale(1);
   transition: 0.3s ease-in-out;
+  z-index: 3;
 }
 #main #content .display-details.active {
   transform: scale(1);
   transition: 0.3s ease-in-out;
+  z-index: 3;
 }
 
 #main #nav button.current {

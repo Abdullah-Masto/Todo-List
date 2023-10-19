@@ -99,7 +99,7 @@ function displayProject() {
   let text;
   // to make the button where ever it's clicked return the name of the button
   if (btn.nodeName == "BUTTON") {
-    text = btn.querySelector(".text").textContent.toLowerCase();
+    text = btn.querySelector(".text").textContent;
   } else if (
     btn.classList.contains("delete") ||
     btn.classList.contains("fa-xmark") ||
@@ -110,13 +110,16 @@ function displayProject() {
     while (btn.nodeName != "BUTTON") {
       btn = btn.parentNode;
     }
-    text = btn.querySelector(".text").textContent.toLowerCase();
+    text = btn.querySelector(".text").textContent;
   }
   toggleCurrent(text);
 }
 function toggleCurrent(title) {
+  if (title == "Inbox") title = "inbox";
+  if (title == "Today") title = "today";
   currentProject = title;
   const current = document.querySelector(`#nav button.${String(title).trim()}`);
+  console.log(title, current);
   current.classList.add("current");
   const others = document.querySelectorAll(
     `#nav button:not(.${String(title).trim()})`
