@@ -145,13 +145,10 @@
   color: #333;
 }
 #main #nav .extra-projects .projects .project .delete {
-  opacity: 0;
   padding: 0.2rem;
   transition: 0.3s ease-in-out;
 }
-#main #nav .extra-projects .projects .project .delete:hover {
-  opacity: 1;
-}
+
 #main #nav .extra-projects .projects .project .title {
   display: flex;
   justify-content: space-between;

@@ -90,12 +90,6 @@ function showNav() {
 }
 function displayProject() {
   let btn = event.target;
-  //...
-  if (btn.id == "today") {
-    addTask.classList.add("hide");
-  } else {
-    addTask.classList.remove("hide");
-  }
   let text;
   // to make the button where ever it's clicked return the name of the button
   if (btn.nodeName == "BUTTON") {
@@ -112,8 +106,14 @@ function displayProject() {
     }
     text = btn.querySelector(".text").textContent;
   }
+  if (btn.id == "today") {
+    addTask.classList.add("hide");
+  } else {
+    addTask.classList.remove("hide");
+  }
   toggleCurrent(text);
 }
+
 function toggleCurrent(title) {
   if (title == "Inbox") title = "inbox";
   if (title == "Today") title = "today";
