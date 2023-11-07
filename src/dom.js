@@ -47,7 +47,7 @@ function overlayCancelling() {
 }
 function addingTodo() {
   const btn = event.target;
-  event.preventDefault();
+  // event.preventDefault();
   const parent = btn.parentNode;
   const name = parent.getElementsByClassName("title")[0].value;
   const description = parent.querySelectorAll("textarea.description")[0].value;
@@ -55,9 +55,7 @@ function addingTodo() {
   const date = new Date(dateEle);
   const radios = parent.querySelectorAll(`input[type = "radio"]`);
   if (name.split("").includes(" ")) {
-    cancel(btn.parentNode.parentNode);
-    alert("White spaces are not allowed in the title!");
-    return;
+    return false;
   }
   let checkedRadio;
   for (let i = 0; i < radios.length; i++) {
@@ -223,14 +221,12 @@ function addProjectBtnEvent() {
   addProjectForm.classList.add("active");
 }
 function submitProjectEvent() {
-  event.preventDefault();
+  // event.preventDefault();
   const btn = event.target;
   const text = addProjectForm.querySelectorAll(`input[type="text"]`)[0];
   const title = text.value;
   if (title.split("").includes(" ")) {
-    cancel(btn.parentNode.parentNode);
-    alert("White spaces are not allowed in the title!");
-    return;
+    return false;
   }
   if (!todos.hasOwnProperty(title)) {
     build.addProject(todos, title);
@@ -340,10 +336,16 @@ function editDetails() {
     todo = todo.parentNode;
   }
   editingTask = todo.querySelector(".title").textContent;
+  let currentTodo = todos[currentProject].find(
+    (item) => item.title === editingTask
+  );
+  editingForm.querySelector(".title").value = currentTodo.title;
+  editingForm.querySelector(".description").value = currentTodo.description;
+  editingForm.querySelector("#date2").value = new Date(currentTodo.date);
 }
 function editingTodo() {
   const btn = event.target;
-  event.preventDefault();
+  // event.preventDefault();
   const parent = btn.parentNode;
   let name = parent.getElementsByClassName("title")[0].value;
   const description = parent.querySelectorAll("textarea.description")[0].value;
@@ -351,10 +353,9 @@ function editingTodo() {
   const date = new Date(dateEle);
   const radios = parent.querySelectorAll(`input[type = "radio"]`);
   if (name.split("").includes(" ")) {
-    cancel(btn.parentNode.parentNode);
-    alert("White spaces are not allowed in the title!");
-    return;
+    return false;
   }
+  // name.setCustomValidity("");
   let checkedRadio;
   for (let i = 0; i < radios.length; i++) {
     if (radios[i].checked == true) {
@@ -408,5 +409,19 @@ editTask.addEventListener("click", editingTodo);
 
 toggleCurrent(currentProject);
 displayProjectTasks(currentProject);
+
+function preventWhiteSpaces() {
+  if (this.value.includes(" ")) {
+    this.setCustomValidity("White spaces are not allowed!");
+  } else {
+    this.setCustomValidity("");
+  }
+}
+const editingTitle = editingForm.querySelector(".title");
+const addingTitle = addingForm.querySelector(".title");
+const projectTitle = addProjectForm.querySelector(".title");
+editingTitle.addEventListener("change", preventWhiteSpaces.bind(editingTitle));
+addingTitle.addEventListener("change", preventWhiteSpaces.bind(addingTitle));
+projectTitle.addEventListener("change", preventWhiteSpaces.bind(projectTitle));
 
 export default loadProjects;
