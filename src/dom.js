@@ -117,7 +117,6 @@ function toggleCurrent(title) {
   if (title == "Today") title = "today";
   currentProject = title;
   const current = document.querySelector(`#nav button.${String(title).trim()}`);
-  console.log(title, current);
   current.classList.add("current");
   const others = document.querySelectorAll(
     `#nav button:not(.${String(title).trim()})`
@@ -336,9 +335,18 @@ function editDetails() {
     todo = todo.parentNode;
   }
   editingTask = todo.querySelector(".title").textContent;
-  let currentTodo = todos[currentProject].find(
-    (item) => item.title === editingTask
-  );
+  let currentTodo;
+  if (currentProject == "today") {
+    const titleArray = editingTask.split(" ");
+    let taskName = titleArray[0];
+    const projectName = titleArray[1].substring(1, titleArray[1].length - 1);
+    currentTodo = todos[projectName].find((item) => item.title === taskName);
+  } else {
+    currentTodo = todos[currentProject].find(
+      (item) => item.title === editingTask
+    );
+  }
+
   editingForm.querySelector(".title").value = currentTodo.title;
   editingForm.querySelector(".description").value = currentTodo.description;
   editingForm.querySelector("#date2").value = new Date(currentTodo.date);
@@ -355,7 +363,6 @@ function editingTodo() {
   if (name.split("").includes(" ")) {
     return false;
   }
-  // name.setCustomValidity("");
   let checkedRadio;
   for (let i = 0; i < radios.length; i++) {
     if (radios[i].checked == true) {
